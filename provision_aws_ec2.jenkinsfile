@@ -3,7 +3,7 @@ pipeline {
     agent { label 'alpine_controller' }
 
     environment {
-        AWS_ACCESS_KEY=credentials('aws_credentials') 
+        AWS_DEFAULT_REGION='us-east-1'
     }
 
     options { skipDefaultCheckout(true) }
@@ -24,7 +24,7 @@ pipeline {
 
         stage('provision') {
             steps {
-                withCredentials([file(credentialsId: 'aws_credentials', accessKeyVariable: 'access-key', secretKeyVariable: 'secret-key')]) {
+                withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws_credentials', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                     sh 'terraform init'
                     sh 'terraform plan'
                     sh 'terraform apply --auto-approve'
