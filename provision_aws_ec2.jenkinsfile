@@ -24,8 +24,7 @@ pipeline {
 
         stage('provision') {
             steps {
-                withCredentials([file(credentialsId: 'aws_credentials', variable: 'FILE')]) {
-                    sh 'use $FILE'
+                withCredentials([file(credentialsId: 'aws_credentials', accessKeyVariable: 'access-key', secretKeyVariable: 'secret-key')]) {
                     sh 'terraform init'
                     sh 'terraform plan'
                     sh 'terraform apply --auto-approve'
