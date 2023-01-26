@@ -1,0 +1,10 @@
+backup/
+*.bak
+*.bkp
+temp/
+tmp/
+*.tmp
+logs/
+*.logs
+.terraform
+terraform.tfvars

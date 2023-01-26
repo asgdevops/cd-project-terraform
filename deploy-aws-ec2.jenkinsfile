@@ -1,0 +1,41 @@
+pipeline {
+    agent { label 'alpine_controller' }
+
+    options { skipDefaultCheckout(true) }
+  
+    stages {
+
+        stage('clean workspace') {
+            steps {
+                cleanWs()
+            }
+        }
+
+        stage('checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage ("init") {
+            steps {
+                sh 'terraform init'
+            }
+        }
+
+        stage ("plan") {
+            steps {
+                sh 'terraform plan'
+            }
+        }
+
+        stage ("apply") {
+            steps {
+                sh 'terraform apply --auto-approve'
+           }
+        }
+
+    }
+
+    post { always { cleanWs() } }    
+}
