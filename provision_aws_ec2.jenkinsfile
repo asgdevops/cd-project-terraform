@@ -1,5 +1,11 @@
 pipeline {
+
     agent { label 'alpine_controller' }
+
+    environment {
+        access-key=credentials('aws_access_key') 
+        secret-key=credentials('aws_secret_key') 
+    }
 
     options { skipDefaultCheckout(true) }
   
@@ -17,18 +23,23 @@ pipeline {
             }
         }
 
+        stage('AWS session') {
+            steps {
+                withAWS(region:'us-east-1', credentials:'aws_credentials') {
+                    // do something
+                }
+            }
+        }
         stage ("init") {
             steps {
                 sh 'terraform init'
             }
         }
-
         stage ("plan") {
             steps {
                 sh 'terraform plan'
             }
         }
-
         stage ("apply") {
             steps {
                 sh 'terraform apply --auto-approve'
