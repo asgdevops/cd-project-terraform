@@ -15,15 +15,6 @@ variable "project" {
 }
 
 
-# Access variables
-variable "access-key" {
-  description = "Access key to AWS console"
-}
-
-variable "secret-key" {
-  description = "Secret key to AWS console"
-}
-
 variable "region" {
   default     = "us-east-1"
   description = "VPC default Region"
