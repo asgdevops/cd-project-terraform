@@ -23,13 +23,6 @@ pipeline {
             }
         }
 
-        stage('AWS session') {
-            steps {
-                withAWS(region:'us-east-1', credentials:'aws_credentials') {
-                    // do something
-                }
-            }
-        }
         stage ("init") {
             steps {
                 sh 'terraform init'
