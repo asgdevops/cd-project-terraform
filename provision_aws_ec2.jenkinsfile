@@ -22,12 +22,14 @@ pipeline {
             }
         }
 
-        stage ('provision') {
-            withCredentials([file(credentialsId: 'aws_credentials', variable: 'FILE')]) {
-                sh 'use $FILE'
-                sh 'terraform init'
-                sh 'terraform plan'
-                sh 'terraform apply --auto-approve'
+        stage('provision') {
+            steps {
+                withCredentials([file(credentialsId: 'aws_credentials', variable: 'FILE')]) {
+                    sh 'use $FILE'
+                    sh 'terraform init'
+                    sh 'terraform plan'
+                    sh 'terraform apply --auto-approve'
+                }
             }
         }
 
