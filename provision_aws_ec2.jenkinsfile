@@ -23,6 +23,14 @@ pipeline {
             }
         }
 
+        stage ("creds") {
+            steps {
+                sh '''
+                echo "access-key = ${AWS_ACCESS_KEY}" > terraform.tfvars
+                echo "secret-key = ${AWS_SECRET_KEY}" >> terraform.tfvars
+                '''
+            }
+        }
         stage ("init") {
             steps {
                 sh 'terraform init'
