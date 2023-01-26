@@ -3,8 +3,8 @@ pipeline {
     agent { label 'alpine_controller' }
 
     environment {
-        access-key=credentials('aws_access_key') 
-        secret-key=credentials('aws_secret_key') 
+        AWS_ACCESS_KEY=credentials('aws_access_key') 
+        AWS_SECRET_KEY=credentials('aws_secret_key') 
     }
 
     options { skipDefaultCheckout(true) }
