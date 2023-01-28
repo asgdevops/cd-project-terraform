@@ -42,18 +42,30 @@ variable "public-subnet-1-cidr" {
 }
 
 # Instance variables
-variable "ami" {
-  # default     = "ami-09e67e426f25ce0d7" # ubuntu-focal-20.04-amd64-server-20210430
+variable "ami-micro" {
   default     = "ami-052efd3df9dad4825" # jammy-22.04-amd64-server-20220609
   description = "AWS Ubuntu 22.04 Image"
   type        = string
 }
 
-variable "instance-type" {
+variable "ami-medium" {
+  default     = "ami-00874d747dde814fa" # jammy-22.04-amd64-server-20220609
+  description = "AWS Ubuntu 22.04 Image"
+  type        = string
+}
+
+variable "instance-type-micro" {
   default     = "t2.micro"
   description = "AWS T2 Micro EC2 Instance"
   type        = string
 }
+
+variable "instance-type-medium" {
+  default     = "t2.medium"
+  description = "AWS T2 Medium EC2 Instance"
+  type        = string
+}
+
 
 # SSH variables
 variable "ssh-location" {
