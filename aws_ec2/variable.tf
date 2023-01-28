@@ -63,13 +63,13 @@ variable "ssh-location" {
 }
 
 variable "key-pair" {
-  default     = "kp-antonio"
+  default     = "asg-kp"
   description = "ssh key pair name"
   type        = string
 }
 
 variable "pem-file" {
-  default     = "kp-antonio.pem"
+  default     = "asg-kp.pem"
   description = "pem filename"
   type        = string
 }
