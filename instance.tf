@@ -20,6 +20,6 @@ resource "aws_instance" "app-instance-1" {
     }
 
     tags = { 
-        "Name" = "cdp-jenkins-ec2-instance-1" 
+        "Name" = "${var.ec2-instance-name}" 
     }
 }

@@ -41,7 +41,7 @@ variable "public-subnet-1-cidr" {
     type        = string 
 }
 
-# Instance variables
+# EC2 Instance variables
 variable "ami-micro" {
   default     = "ami-052efd3df9dad4825" # jammy-22.04-amd64-server-20220609
   description = "AWS Ubuntu 22.04 Image"
@@ -63,6 +63,12 @@ variable "instance-type-micro" {
 variable "instance-type-medium" {
   default     = "t2.medium"
   description = "AWS T2 Medium EC2 Instance"
+  type        = string
+}
+
+variable "ec2-instance-name" {
+  default     = "cdp-jenkins-ec2-instance-1"
+  description = "AWS EC2 Instance Name"
   type        = string
 }
 
